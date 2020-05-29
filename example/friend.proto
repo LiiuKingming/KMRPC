@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package kingming;
+
+option cc_generic_services = true;
+
+message ResultCode {
+    int32 errcode = 1;
+    bytes errmsg = 2;
+}
+
+message GetFrinedsListRequest {
+    int32 userid = 1;
+}
+
+message GetFrinedsListResponse {
+    ResultCode result = 1;
+    repeated bytes friends = 2;
+}
+
+
+service FriendServiceRpc {
+    rpc GetFrinedsList(GetFrinedsListRequest) returns(GetFrinedsListResponse);
+}
